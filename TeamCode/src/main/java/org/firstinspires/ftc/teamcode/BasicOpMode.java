@@ -40,7 +40,7 @@ public class BasicOpMode extends OpMode {
              double turn;
              double forward;
              double max;
-             double timeS;
+
 
 
         // BASIC CONTROLS AND STEERING
@@ -75,41 +75,32 @@ public class BasicOpMode extends OpMode {
             // Duck Motor
 
 
-              //      if ( gamepad2.a == true ) {
-              //          robot.duckSpinner.setPower(-1);
-              //      } else {
-              //          robot.duckSpinner.setPower(0);
-              //      }
+                    if ( gamepad2.a == true ) {
+                        robot.duckSpinner.setPower(-1);
+                    } else {
+                        robot.duckSpinner.setPower(0);
+                    }
          //ARM COMPONENT OSCILLATOR 1
-            if ( gamepad2.dpad_up == true && gamepad2.a == true) {
-                robot.oscillator1.setPosition(1);
-            } else if(gamepad2.dpad_down == true && gamepad2.a == true) {
-                robot.oscillator1.setPosition(0);
+            if ( gamepad2.x == true ) {
+                robot.spinner.setPower(1);
+            } else if ( gamepad2.b == true ) {
+                robot.spinner.setPower(-1);
             } else {
-                robot.oscillator1.setPosition(0.55);
+                robot.spinner.setPower(0.04);
             }
 
+            //Arm Forward Pos
+
+
+            telemetry.addData("Servo Pos: ", robot.spinner.getPower());
           //ARM COMPONENT OSCILLATOR 2
-            if (gamepad2.dpad_up == true && gamepad2.b == true) {
-                robot.oscillator2.setPosition(1);
-            } else if(gamepad2.dpad_down == true && gamepad2.b == true){
-                robot.oscillator2.setPosition(0);
+            if (gamepad2.dpad_up == true) {
+                robot.armMotor.setPower(1);
+            } else if(gamepad2.dpad_down == true){
+                robot.armMotor.setPower(-1);
             } else {
-                robot.oscillator2.setPosition(0.5);
+                robot.armMotor.setPower(0);
             }
-
-
-
-         //encoder turn
-
-
-
-
-
-
-
-
-
 
 
                robot.leftDrive.setPower(leftPower);

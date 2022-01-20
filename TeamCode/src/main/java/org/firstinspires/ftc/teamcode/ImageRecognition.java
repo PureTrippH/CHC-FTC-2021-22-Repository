@@ -33,7 +33,11 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.util.ElapsedTime;
+
 import java.util.List;
+
+import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer.CameraDirection;
@@ -60,59 +64,25 @@ public class ImageRecognition extends LinearOpMode {
             "Duck",
             "Marker"
     };
-
-    /*
-     * IMPORTANT: You need to obtain your own license key to use Vuforia. The string below with which
-     * 'parameters.vuforiaLicenseKey' is initialized is for illustration only, and will not function.
-     * A Vuforia 'Development' license key, can be obtained free of charge from the Vuforia developer
-     * web site at https://developer.vuforia.com/license-manager.
-     *
-     * Vuforia license keys are always 380 characters long, and look as if they contain mostly
-     * random data. As an example, here is a example of a fragment of a valid key:
-     *      ... yIgIzTqZ4mWjk9wd3cZO9T1axEqzuhxoGlfOOI2dRzKS4T0hQ8kT ...
-     * Once you've obtained a license key, copy the string from the Vuforia web site
-     * and paste it in to your code on the next line, between the double quotes.
-     */
+    public HardwarePushbot robot = new HardwarePushbot();
     private static final String VUFORIA_KEY = "AepD6Bz/////AAABmWZeDJimx0/4sUMey/tHntUME8ulVo1RFuZhf7KeDgXkrDOK83DNl5gOJjOPwXOJnY2kcPXXFRcazGdhwW6VgLVlWUww3E9ZIATfkLEkRyVq8jOyHKD/TgvBQO8FlXSQr1hqDEc33YzOX7Bp1VTdiGRTbF3QZF4ZozQ/ZzzhDnpgchYquHkPMqrss466UTjQqQrVPF0oU2bKoUJQ+6ewPzgMr+38E5I8K64I7uYTUFn63iz34QlLKlURx5NdS7mxyVcNcxpAJcNrQ4Oc6WEGl/PP6dKaaNKoaK9pyyrrnc+yqg3cJZd0zWJx8llJGtDPyM8h1xuDk6NCTG8l0Nq6JQ+1MBpHko9Cb+2CjYLLi0ZN";
-
-    /**
-     * {@link #vuforia} is the variable we will use to store our instance of the Vuforia
-     * localization engine.
-     */
     private VuforiaLocalizer vuforia;
-
-    /**
-     * {@link #tfod} is the variable we will use to store our instance of the TensorFlow Object
-     * Detection engine.
-     */
     private TFObjectDetector tfod;
 
-    private FreeShippingAutonomous encoderDrive = new FreeShippingAutonomous();
+    private ElapsedTime runtime = new ElapsedTime();
+
+    public FreeShippingAutonomous encoders = new FreeShippingAutonomous();
 
     @Override
     public void runOpMode() {
-        // The TFObjectDetector uses the camera frames from the VuforiaLocalizer, so we create that
-        // first.
         initVuforia();
         initTfod();
 
-        /**
-         * Activate TensorFlow Object Detection before we wait for the start command.
-         * Do it here so that the Camera Stream window will have the TensorFlow annotations visible.
-         **/
         if (tfod != null) {
             tfod.activate();
-
-            // The TensorFlow software will scale the input images from the camera to a lower resolution.
-            // This can result in lower detection accuracy at longer distances (> 55cm or 22").
-            // If your target is at distance greater than 50 cm (20") you can adjust the magnification value
-            // to artificially zoom in to the center of image.  For best results, the "aspectRatio" argument
-            // should be set to the value of the images used to create the TensorFlow Object Detection model
-            // (typically 16/9).
             tfod.setZoom(1.5, 16.0/9.0);
         }
 
-        /** Wait for the game to begin */
         telemetry.addData(">", "Press Play to start op mode");
         telemetry.update();
         waitForStart();
@@ -136,10 +106,9 @@ public class ImageRecognition extends LinearOpMode {
                                     recognition.getRight(), recognition.getBottom());
                             i++;
                         }
-                        if(updatedRecognitions.size() > 0 && updatedRecognitions.get(0).getLabel() == "Duck") {
+                        if(updatedRecognitions.size() > 0 && updatedRecognitions.get(0).getLabel() == "Cube") {
                             telemetry.addLine("It can check");
-                            encoderDrive.encoderDrive();
-                            break;
+                            //encoders.initEncoders();
                         }
 
 

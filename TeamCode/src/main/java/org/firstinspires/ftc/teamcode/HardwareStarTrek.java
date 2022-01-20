@@ -61,6 +61,8 @@ public class HardwareStarTrek
     public DcMotor duckSpinner = null;
     public Servo oscillator1 = null;
     public Servo oscillator2 = null;
+    public DcMotor armMotor = null;
+    public CRServo spinner = null;
     /* Public OpMode members. */
 
     //Public sensors
@@ -85,8 +87,10 @@ public class HardwareStarTrek
         rightDrive = ahwMap.get(DcMotor.class,"drivingMotorRight");
         servoTest = ahwMap.get(Servo.class, "servoTest");
         duckSpinner = ahwMap.get (DcMotor.class, "duckSpinner");
+        armMotor = ahwMap.get (DcMotor.class, "armMotor");
         oscillator1 = ahwMap.get (Servo.class,"oscillator1");
         oscillator2 = ahwMap.get (Servo.class, "oscillator2");
+        spinner = ahwMap.get (CRServo.class, "spinner");
 
 
         int num = 1;
@@ -94,9 +98,11 @@ public class HardwareStarTrek
         leftDrive.setPower(0);
         rightDrive.setPower(0);
         duckSpinner.setPower(0);
+        armMotor.setPower(0);
         oscillator1.setPosition(0.5);
         oscillator2.setPosition(0.5);
         servoTest.setPosition(0.5);
+        spinner.setPower(0.04);
 
 
 
