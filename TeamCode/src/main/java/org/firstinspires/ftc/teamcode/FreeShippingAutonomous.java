@@ -30,7 +30,7 @@ public class FreeShippingAutonomous {
 
         robot.leftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.rightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        //encoderDrive(TURN_SPEED,   -12, -12, 30);
+        encoderDrive(TURN_SPEED,   -12, -12, 30, robot);
         //encoderDrive(DRIVE_SPEED,  -120, 120, 30);  // S1
         //encoderDrive(TURN_SPEED,   -10.76, -10.76, 30);
         //encoderDrive(DRIVE_SPEED,  100, -100, 30);  // S1
@@ -46,7 +46,7 @@ public class FreeShippingAutonomous {
 
         telemetry.addData("Path", "Complete");
         telemetry.update(); */
-    //}
+    }
 
     /*
      *  Method to perfmorm a relative move, based on encoder counts.
@@ -56,9 +56,9 @@ public class FreeShippingAutonomous {
      *  2) Move runs out of time
      *  3) Driver stops the opmode running.
      */
-    /*public void encoderDrive(double speed,
+    public void encoderDrive(double speed,
                              double leftInches, double rightInches,
-                             double timeoutS) {
+                             double timeoutS, HardwareStarTrek robot) {
         int newLeftTarget;
         int newRightTarget;
 
@@ -88,5 +88,5 @@ public class FreeShippingAutonomous {
             robot.rightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
             //  sleep(250);   // optional pause after each move
-    */}
+    }
 }

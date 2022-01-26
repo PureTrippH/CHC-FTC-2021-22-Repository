@@ -64,7 +64,8 @@ public class ImageRecognition extends LinearOpMode {
             "Duck",
             "Marker"
     };
-    public HardwarePushbot robot = new HardwarePushbot();
+    public HardwareStarTrek robot = new HardwareStarTrek();
+
     private static final String VUFORIA_KEY = "AepD6Bz/////AAABmWZeDJimx0/4sUMey/tHntUME8ulVo1RFuZhf7KeDgXkrDOK83DNl5gOJjOPwXOJnY2kcPXXFRcazGdhwW6VgLVlWUww3E9ZIATfkLEkRyVq8jOyHKD/TgvBQO8FlXSQr1hqDEc33YzOX7Bp1VTdiGRTbF3QZF4ZozQ/ZzzhDnpgchYquHkPMqrss466UTjQqQrVPF0oU2bKoUJQ+6ewPzgMr+38E5I8K64I7uYTUFn63iz34QlLKlURx5NdS7mxyVcNcxpAJcNrQ4Oc6WEGl/PP6dKaaNKoaK9pyyrrnc+yqg3cJZd0zWJx8llJGtDPyM8h1xuDk6NCTG8l0Nq6JQ+1MBpHko9Cb+2CjYLLi0ZN";
     private VuforiaLocalizer vuforia;
     private TFObjectDetector tfod;
@@ -77,6 +78,7 @@ public class ImageRecognition extends LinearOpMode {
     public void runOpMode() {
         initVuforia();
         initTfod();
+        robot.init(hardwareMap);
 
         if (tfod != null) {
             tfod.activate();
@@ -108,7 +110,7 @@ public class ImageRecognition extends LinearOpMode {
                         }
                         if(updatedRecognitions.size() > 0 && updatedRecognitions.get(0).getLabel() == "Cube") {
                             telemetry.addLine("It can check");
-                            //encoders.initEncoders();
+                            encoders.initEncoders(robot);
                         }
 
 

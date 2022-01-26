@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.util.Range;
 @TeleOp(name = "Free Shipping: Driving")
 public class BasicOpMode extends OpMode {
@@ -94,16 +95,35 @@ public class BasicOpMode extends OpMode {
 
             telemetry.addData("Servo Pos: ", robot.spinner.getPower());
           //ARM COMPONENT OSCILLATOR 2
-            if (gamepad2.dpad_up == true) {
-                robot.armMotor.setPower(1);
-            } else if(gamepad2.dpad_down == true){
-                robot.armMotor.setPower(-1);
+            if (gamepad2.dpad_up == true && gamepad2.a == false && gamepad2.y == false) {
+                robot.armMotor.setPower(1.0);
+            } else if(gamepad2.dpad_down == true && gamepad2.a == false && gamepad2.y == false){
+                robot.armMotor.setPower(-1.0);
             } else {
                 robot.armMotor.setPower(0);
             }
 
+            if (gamepad2.y == true ) {
+              //  if (gamepad2.dpad_down) {
+                    robot.oscillator1.setPower(1);
+                } else if (gamepad2.a ==true) {
+                    robot.oscillator1.setPower(-1);
+                } else {
+                    robot.oscillator1.setPower(0);
+                }
 
-               robot.leftDrive.setPower(leftPower);
+                if (gamepad2.right_bumper == true) {
+              //      if (gamepad2.dpad_down) {
+                        robot.oscillator2.setPower(1);
+                    } else if (gamepad2.right_trigger >=0.5) {
+                        robot.oscillator2.setPower(-1);
+                    } else {
+                        robot.oscillator2.setPower(0);
+                    }
+
+
+
+                    robot.leftDrive.setPower(leftPower);
                robot.rightDrive.setPower(rightPower);
 
 
