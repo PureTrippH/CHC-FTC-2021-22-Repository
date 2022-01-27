@@ -75,7 +75,6 @@ public class BasicOpMode extends OpMode {
 
             // Duck Motor
 
-
                     if ( gamepad2.a == true ) {
                         robot.duckSpinner.setPower(-1);
                     } else {
@@ -86,8 +85,8 @@ public class BasicOpMode extends OpMode {
                 robot.spinner.setPower(1);
             } else if ( gamepad2.b == true ) {
                 robot.spinner.setPower(-1);
-            } else {
-                robot.spinner.setPower(0.04);
+            } else if(gamepad2.y == true) {
+                robot.spinner.setPower(0.004);
             }
 
             //Arm Forward Pos
@@ -95,36 +94,35 @@ public class BasicOpMode extends OpMode {
 
             telemetry.addData("Servo Pos: ", robot.spinner.getPower());
           //ARM COMPONENT OSCILLATOR 2
-            if (gamepad2.dpad_up == true && gamepad2.a == false && gamepad2.y == false) {
-                robot.armMotor.setPower(1.0);
-            } else if(gamepad2.dpad_down == true && gamepad2.a == false && gamepad2.y == false){
+            if (gamepad2.dpad_up == true) {
+                robot.armMotor.setPower(0.5);
+            } else if(gamepad2.dpad_down == true){
                 robot.armMotor.setPower(-1.0);
             } else {
                 robot.armMotor.setPower(0);
             }
 
-            if (gamepad2.y == true ) {
-              //  if (gamepad2.dpad_down) {
-                    robot.oscillator1.setPower(1);
-                } else if (gamepad2.a ==true) {
-                    robot.oscillator1.setPower(-1);
-                } else {
-                    robot.oscillator1.setPower(0);
-                }
-
-                if (gamepad2.right_bumper == true) {
-              //      if (gamepad2.dpad_down) {
-                        robot.oscillator2.setPower(1);
-                    } else if (gamepad2.right_trigger >=0.5) {
-                        robot.oscillator2.setPower(-1);
-                    } else {
-                        robot.oscillator2.setPower(0);
-                    }
+            if (gamepad2.left_bumper == true ) {
+                robot.oscillator1.setPower(1);
+            } else if (gamepad2.left_trigger >=0.5) {
+                robot.oscillator1.setPower(-1);
+            } else {
+                robot.oscillator1.setPower(0);
+            }
 
 
+            if (gamepad2.right_bumper == true) {
+                robot.oscillator2.setPower(-1);
+            } else if (gamepad2.right_trigger >=0.5) {
+                robot.oscillator2.setPower(1);
+            } else {
+                robot.oscillator2.setPower(0);
+            }
 
-                    robot.leftDrive.setPower(leftPower);
-               robot.rightDrive.setPower(rightPower);
+
+
+            robot.leftDrive.setPower(leftPower);
+            robot.rightDrive.setPower(rightPower);
 
 
 
