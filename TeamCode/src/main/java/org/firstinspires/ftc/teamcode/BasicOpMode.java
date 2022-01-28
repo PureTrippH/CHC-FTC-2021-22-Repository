@@ -80,7 +80,7 @@ public class BasicOpMode extends OpMode {
                     } else {
                         robot.duckSpinner.setPower(0);
                     }
-         //ARM COMPONENT OSCILLATOR 1
+         //Spinner
             if ( gamepad2.x == true ) {
                 robot.spinner.setPower(1);
             } else if ( gamepad2.b == true ) {
@@ -89,7 +89,6 @@ public class BasicOpMode extends OpMode {
                 robot.spinner.setPower(0.004);
             }
 
-            //Arm Forward Pos
 
 
             telemetry.addData("Servo Pos: ", robot.spinner.getPower());

@@ -102,7 +102,7 @@ public class HardwareStarTrek
         oscillator1.setPower(0.04);
         oscillator2.setPower(0.04);
         servoTest.setPosition(0.5);
-        spinner.setPower(0.04);
+        spinner.setPower(0.004);
 
 
 
