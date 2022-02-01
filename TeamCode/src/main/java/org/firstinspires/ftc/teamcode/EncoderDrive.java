@@ -18,7 +18,7 @@ public class EncoderDrive extends LinearOpMode {
     static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
             (WHEEL_DIAMETER_INCHES * 3.1415926);
     static final double     DRIVE_SPEED             = .5;
-    static final double     TURN_SPEED              = .6;
+    static final double     TURN_SPEED              = .4;
 
 
 
@@ -55,13 +55,23 @@ public class EncoderDrive extends LinearOpMode {
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
         //encoderDrive(TURN_SPEED,   -12, -12, 30);
         encoderDrive(DRIVE_SPEED,  -13, 13, 30);  // S1
-        encoderDrive(TURN_SPEED,   12.2, 12.2, 30);
+        encoderDrive(TURN_SPEED,   12.34, 12.34, 30);
         encoderDrive(DRIVE_SPEED,  25.3, -25.3, 30);
-        encoderDrive(TURN_SPEED,   -12.3, -12.3, 30);
+        encoderDrive(TURN_SPEED,   -12.34, -12.34, 30);
         robot.duckSpinner.setPower(-1);
         encoderDrive(0.2,  9, -9, 30);
-        encoderDrive(0.05,  2, -2, 30);
+        encoderDrive(0.01,  0.5, -0.5, 30);
+        robot.duckSpinner.setPower(0);
         encoderDrive(DRIVE_SPEED,  -9, 9, 30);
+        encoderDrive(TURN_SPEED,   -2.5, -2.5, 30);
+        encoderDrive(DRIVE_SPEED,   -27, 27, 30);
+        encoderDrive(TURN_SPEED,   -12.34, -12.34, 30);
+        encoderDrive(DRIVE_SPEED,   19, -19, 30);
+
+
+
+
+
         //encoderDrive(TURN_SPEED,   -10.76, -10.76, 30);
         //encoderDrive(DRIVE_SPEED,  100, -100, 30);  // S1
 
