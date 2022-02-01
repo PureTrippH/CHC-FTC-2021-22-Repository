@@ -55,21 +55,27 @@ public class EncoderDrive extends LinearOpMode {
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
         //encoderDrive(TURN_SPEED,   -12, -12, 30);
         encoderDrive(DRIVE_SPEED,  -13, 13, 30);  // S1
-        encoderDrive(TURN_SPEED,   12.34, 12.34, 30);
-        encoderDrive(DRIVE_SPEED,  25.3, -25.3, 30);
-        encoderDrive(TURN_SPEED,   -12.34, -12.34, 30);
+        encoderDrive(TURN_SPEED,   11.10, 11.10, 30);
+        encoderDrive(DRIVE_SPEED,  22.3, -22.3, 30);
+        encoderDrive(TURN_SPEED,   -11.10, -11.10, 30);
         robot.duckSpinner.setPower(-1);
-        encoderDrive(0.2,  9, -9, 30);
+        encoderDrive(0.2,  10, -10, 30);
         encoderDrive(0.01,  0.5, -0.5, 30);
         robot.duckSpinner.setPower(0);
-        encoderDrive(DRIVE_SPEED,  -9, 9, 30);
-        encoderDrive(TURN_SPEED,   -2.5, -2.5, 30);
-        encoderDrive(DRIVE_SPEED,   -27, 27, 30);
-        encoderDrive(TURN_SPEED,   -12.34, -12.34, 30);
-        encoderDrive(DRIVE_SPEED,   19, -19, 30);
-
-
-
+        encoderDrive(DRIVE_SPEED,  -10, 10, 30);
+        encoderDrive(TURN_SPEED,   -2.3, -2.3, 30);
+        encoderDrive(DRIVE_SPEED,   -21, 21, 30);
+        encoderDrive(TURN_SPEED,   -11.10, -11.10, 30);
+        encoderDrive(DRIVE_SPEED,   25, -25, 30);
+        robot.armMotor.setPower(0.5);
+        sleep(2900);
+        robot.armMotor.setPower(0);
+        robot.spinner.setPower(1);
+        sleep(2900);
+        robot.spinner.setPower(0);
+        encoderDrive(DRIVE_SPEED,   -28, 28, 30);
+        encoderDrive(TURN_SPEED,   14.10, 14.10, 30);
+        encoderDrive(DRIVE_SPEED,   10, -10, 30);
 
 
         //encoderDrive(TURN_SPEED,   -10.76, -10.76, 30);

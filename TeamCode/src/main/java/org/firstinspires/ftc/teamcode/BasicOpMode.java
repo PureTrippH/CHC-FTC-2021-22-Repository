@@ -81,9 +81,9 @@ public class BasicOpMode extends OpMode {
                         robot.duckSpinner.setPower(0);
                     }
          //Spinner
-            if ( gamepad2.x == true ) {
+            if ( gamepad2.b == true ) {
                 robot.spinner.setPower(1);
-            } else if ( gamepad2.b == true ) {
+            } else if ( gamepad2.x == true ) {
                 robot.spinner.setPower(-1);
             } else if(gamepad2.y == true) {
                 robot.spinner.setPower(0.004);
