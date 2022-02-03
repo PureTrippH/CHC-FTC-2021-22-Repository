@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
 import com.qualcomm.robotcore.util.ElapsedTime;
-@Autonomous(name = "Free Shipping: Encoders")
+@Autonomous(name = "Free Shipping: Red Duck Encoders")
 public class EncoderDrive extends LinearOpMode {
     private HardwareStarTrek robot = new HardwareStarTrek();
     private ElapsedTime runtime = new ElapsedTime();
@@ -44,8 +44,8 @@ public class EncoderDrive extends LinearOpMode {
 
         // Send telemetry message to indicate successful Encoder reset
         telemetry.addData("Path0",  "Starting at %7d :%7d",
-                robot.leftDrive.getCurrentPosition(),
-                robot.rightDrive.getCurrentPosition());
+        robot.leftDrive.getCurrentPosition(),
+        robot.rightDrive.getCurrentPosition());
         telemetry.update();
 
         // Wait for the game to start (driver presses PLAY)

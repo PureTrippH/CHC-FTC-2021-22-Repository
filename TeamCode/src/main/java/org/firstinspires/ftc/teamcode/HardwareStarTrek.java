@@ -99,10 +99,10 @@ public class HardwareStarTrek
         rightDrive.setPower(0);
         duckSpinner.setPower(0);
         armMotor.setPower(0);
-        oscillator1.setPower(0.04);
-        oscillator2.setPower(0.04);
+        oscillator1.setPower(0.0);
+        oscillator2.setPower(0.0);
         servoTest.setPosition(0.5);
-        spinner.setPower(0.004);
+        spinner.setPower(0);
 
 
 
